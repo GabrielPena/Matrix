@@ -1,6 +1,7 @@
 #pragma once
 
-#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <cassert>
 
@@ -18,9 +19,14 @@ public:
     friend std::ostream & operator << ( std::ostream &out, const matrix & a );
 
     matrix & operator = ( const matrix & o );
-    matrix operator + ( const matrix & o ) const;
-    matrix operator - ( const matrix & o ) const;
-    matrix operator * ( const matrix & o ) const;
+    matrix * operator + ( const matrix & o ) const;
+    matrix * operator - ( const matrix & o ) const;
+    matrix * operator * ( const matrix & o ) const;
+    matrix * operator * ( const float a ) const;
 
     void Fill( float v );
+    void MakeIdentity();
+    
+private:
+    float ** Create();
 };
